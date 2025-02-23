@@ -9,6 +9,7 @@
 <body>
     <!-- Navigasjonsbar -->
     <nav class="navbar">
+        <a href="KLP.html">KLP</a>
         <a href="hjemside.html">Hjem</a>
         <a href="deposit.html">Sett inn penger</a>
         <a href="withdraw.html">Ta ut penger</a>
@@ -16,16 +17,20 @@
     </nav>
 
     <!-- Innhold -->
-    <div class="container">
-        <h1>Velkommen til KLP Bank</h1>
-        <div id="userForm">
-            <input type="text" id="username" placeholder="Skriv inn navn" required>
-            <button onclick="createUser()">Opprett bruker</button>
-        </div>
-        <div id="menu" style="display:none;">
-            <p>Velkommen, <span id="displayName"></span>!</p>
-            <p>Bankkonto: <span id="accountNumber"></span></p>
-            <p>Saldo: <span id="balance"></span> NOK</p>
+    <div class="content-container">
+        <img src="bilder/phoneman.jpg" alt="Phone Man" class="left-image">
+        
+        <div class="text-container">
+            <h1>Velkommen til KLP Bank</h1>
+            <div id="userForm">
+                <input type="text" id="username" placeholder="Skriv inn navn" required>
+                <button onclick="createUser()">Opprett bruker</button>
+            </div>
+            <div id="menu" style="display:none;">
+                <p>Velkommen, <span id="displayName"></span>!</p>
+                <p>Bankkonto: <span id="accountNumber"></span></p>
+                <p>Saldo: <span id="balance"></span> NOK</p>
+            </div>
         </div>
     </div>
 

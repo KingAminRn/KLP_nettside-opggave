@@ -85,7 +85,7 @@ button:hover {
 
 /* Bilde som skal vises på venstre side */
 .left-image {
-    width: 50%; /* Økt bredde for bildet til 50% */
+    width: 40%; /* Økt bredde for bildet til 50% */
     margin-right: 5%; /* Litt avstand til teksten */
     margin-top: 20px;
     border-radius: 10px; /* Rundede hjørner på bildet */
@@ -157,102 +157,3 @@ button:hover {
 }
 
 
-/*____________________________________________________*/ 
-
-/* Generell stil for innholdet */
-.content-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
-}
-
-.left-image {
-    width: 40%; /* Bildet tar 40% av plassen */
-    margin-right: 5%;
-    border-radius: 10px; /* Rundede hjørner */
-}
-
-.text-container {
-    width: 50%; /* Tekstcontaineren tar 50% av plassen */
-    margin-top: 150px; /* Plasserer teksten litt mer mot midten */
-}
-
-.text-container h1 {
-    font-size: 48px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.text-container p {
-    font-size: 16px;
-    color: #777;
-}
-
-.get-started-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 20px;
-    background-color: #28a745;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 5px;
-    width: auto;
-    text-align: center;
-}
-
-.get-started-btn:hover {
-    background-color: #218838;
-}
-
-/* Cards container */
-.cards-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 40px;
-    padding: 20px;
-}
-
-/* Card-stil */
-.card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    font-size: 18px;
-    color: #333;
-}
-
-.card h3 {
-    font-size: 18px;
-    color: #333;
-    font-weight: bold;
-}
-
-/* Responsiv design for små skjermer */
-@media (max-width: 768px) {
-    .content-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .left-image {
-        width: 80%;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .text-container {
-        width: 80%;
-    }
-
-    .cards-container {
-        grid-template-columns: 1fr; /* Ett kort per rad på små skjermer */
-        text-align: center;
-    }
-}
