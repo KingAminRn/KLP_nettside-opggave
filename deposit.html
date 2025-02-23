@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sett inn penger</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigasjonsbar -->
+    <nav class="navbar">
+        <a href="hjemside.html">Hjem</a>
+        <a href="deposit.html">Sett inn penger</a>
+        <a href="withdraw.html">Ta ut penger</a>
+        <a href="balance.html">Se saldo</a>
+    </nav>
+
+    <!-- Innhold -->
+    <div class="container">
+        <h1>Sett inn penger</h1>
+        <input type="number" id="depositAmount" placeholder="Beløp" min="1">
+        <button onclick="depositMoney()">Sett inn</button>
+    </div>
+
+    <script>
+        function depositMoney() {
+            let amount = parseFloat(document.getElementById("depositAmount").value);
+            if (amount > 0) {
+                let user = JSON.parse(localStorage.getItem("user"));
+                user.balance += amount;
+                localStorage.setItem("user", JSON.stringify(user));
+                alert("Penger satt inn!");
+            } else {
+                alert("Skriv inn et gyldig beløp.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+/* Generell styling */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #eef2f5; /* Lys bakgrunnsfarge for et rent utseende */
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigasjonsbar */
+.navbar {
+    background-color: #007BFF; /* Blå bakgrunnsfarge */
+    padding: 10px 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background-color: #0056b3; /* Mørkere blå ved hover */
+    border-radius: 5px;
+}
+
+/* Hovedcontainer */
+.container {
+    width: 90%;
+    max-width: 500px; /* Sette en maksimal bredde for større skjermer */
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Input-felt og knapper */
+input {
+    padding: 12px;
+    margin: 12px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 14px;
+    margin: 10px 0;
+    width: 100%;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Responsiv design */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+    .navbar a {
+        padding: 12px;
+        width: 100%;
+    }
+}
+
+
+/* Bilde som skal vises på venstre side */
+.left-image {
+    width: 50%; /* Økt bredde for bildet til 50% */
+    margin-right: 5%; /* Litt avstand til teksten */
+    margin-top: 20px;
+    border-radius: 10px; /* Rundede hjørner på bildet */
+}
+
+/* Container for tekst til høyre for bildet */
+.text-container {
+    width: 45%; /* Juster bredden på tekstseksjonen til 45% for å gi mer plass til bildet */
+    margin-top: 150px; /* Økt margin-top for å sentrere teksten mer ned */
+}
+
+/* Stor tekst */
+.text-container h1 {
+    font-size: 60px; /* Større fontstørrelse for hovedteksten */
+    font-weight: bold;
+    color: #333; /* Mørk grå farge for bedre lesbarhet */
+    margin-bottom: 10px;
+}
+
+/* Liten tekst */
+.text-container p {
+    font-size: 30px; /* Liten fontstørrelse for beskrivelsen */
+    color: #777; /* Lys grå farge for den mindre teksten */
+}
+
+/* Knapp under teksten */
+.get-started-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #28a745; /* Grønn bakgrunnsfarge */
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    border-radius: 5px;
+    width: auto;
+    text-align: center;
+}
+
+.get-started-btn:hover {
+    background-color: #218838; /* Mørkere grønn ved hover */
+}
+
+/* Container for bilde og tekst */
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+/* Responsiv design for små skjermer */
+@media (max-width: 768px) {
+    .content-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .left-image {
+        width: 80%; /* Gjør bildet større på små skjermer */
+        margin-right: 0;
+        margin-bottom: 20px; /* Legg til litt mellomrom under bildet */
+    }
+
+    .text-container {
+        width: 80%;
+    }
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Se saldo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigasjonsbar -->
+    <nav class="navbar">
+        <a href="hjemside.html">Hjem</a>
+        <a href="deposit.html">Sett inn penger</a>
+        <a href="withdraw.html">Ta ut penger</a>
+        <a href="balance.html">Se saldo</a>
+    </nav>
+
+    <!-- Innhold -->
+    <div class="container">
+        <h1>Din saldo</h1>
+        <p>Saldo: <span id="balanceAmount"></span> NOK</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let user = JSON.parse(localStorage.getItem("user"));
+            document.getElementById("balanceAmount").textContent = user.balance;
+        });
+    </script>
+</body>
+</html>

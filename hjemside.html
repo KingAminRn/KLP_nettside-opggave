@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KLP Bank</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigasjonsbar -->
+    <nav class="navbar">
+        <a href="hjemside.html">Hjem</a>
+        <a href="deposit.html">Sett inn penger</a>
+        <a href="withdraw.html">Ta ut penger</a>
+        <a href="balance.html">Se saldo</a>
+    </nav>
+
+    <!-- Innhold -->
+    <div class="container">
+        <h1>Velkommen til KLP Bank</h1>
+        <div id="userForm">
+            <input type="text" id="username" placeholder="Skriv inn navn" required>
+            <button onclick="createUser()">Opprett bruker</button>
+        </div>
+        <div id="menu" style="display:none;">
+            <p>Velkommen, <span id="displayName"></span>!</p>
+            <p>Bankkonto: <span id="accountNumber"></span></p>
+            <p>Saldo: <span id="balance"></span> NOK</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const user = JSON.parse(localStorage.getItem("user"));
+            if (user) {
+                showMenu(user);
+            }
+        });
+
+        function createUser() {
+            const username = document.getElementById("username").value;
+            if (!username) {
+                alert("Vennligst skriv inn et navn.");
+                return;
+            }
+            const accountNumber = Math.floor(100000000 + Math.random() * 900000000);
+            const user = { name: username, accountNumber: accountNumber, balance: 0 };
+            localStorage.setItem("user", JSON.stringify(user));
+            showMenu(user);
+        }
+
+        function showMenu(user) {
+            document.getElementById("userForm").style.display = "none";
+            document.getElementById("menu").style.display = "block";
+            document.getElementById("displayName").textContent = user.name;
+            document.getElementById("accountNumber").textContent = user.accountNumber;
+            document.getElementById("balance").textContent = user.balance;
+        }
+    </script>
+</body>
+</html>

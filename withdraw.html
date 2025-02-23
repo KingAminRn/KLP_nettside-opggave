@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ta ut penger</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigasjonsbar -->
+    <nav class="navbar">
+        <a href="hjemside.html">Hjem</a>
+        <a href="deposit.html">Sett inn penger</a>
+        <a href="withdraw.html">Ta ut penger</a>
+        <a href="balance.html">Se saldo</a>
+    </nav>
+
+    <!-- Innhold -->
+    <div class="container">
+        <h1>Ta ut penger</h1>
+        <input type="number" id="withdrawAmount" placeholder="Beløp" min="1">
+        <button onclick="withdrawMoney()">Ta ut</button>
+    </div>
+
+    <script>
+        function withdrawMoney() {
+            let amount = parseFloat(document.getElementById("withdrawAmount").value);
+            let user = JSON.parse(localStorage.getItem("user"));
+            if (amount > 0 && amount <= user.balance) {
+                user.balance -= amount;
+                localStorage.setItem("user", JSON.stringify(user));
+                alert("Penger tatt ut!");
+            } else {
+                alert("Ugyldig beløp eller ikke nok penger på konto.");
+            }
+        }
+    </script>
+</body>
+</html>
+
