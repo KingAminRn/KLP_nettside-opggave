@@ -77,6 +77,73 @@ button:hover {
     background-color: #218838;
 }
 
+/* hjemside styling tekst */
+
+/* Styling for hovedoverskrift */
+.text-container h1 {
+    font-size: 50px; /* Gjør tittelen litt mindre for bedre balanse */
+    font-weight: bold;
+    color: #007BFF; /* Bruker bankens blåfarge for mer kontrast */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); /* Gir en myk skyggeeffekt */
+}
+
+/* Styling for velkomsttekst, bankkonto og saldo */
+.text-container p {
+    font-size: 24px;
+    font-weight: 500;
+    color: #333; /* Gjør teksten mørkere for bedre lesbarhet */
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    display: inline-block; /* Gjør boksene mer kompakte */
+    margin: 10px 0;
+}
+
+/* Spesifikk styling for bankkonto og saldo */
+#menu p {
+    font-size: 22px;
+    font-weight: 600;
+    color: #444;
+    background: #f8f9fa; /* Lett grå bakgrunn for mer dybde */
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+/* Øker mellomrommet mellom teksten */
+#menu span {
+    font-weight: bold;
+    color: #007BFF;
+}
+
+/* Kun for hjemside.html */
+body:has(.text-container) .text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Sentrerer teksten */
+    text-align: center;
+}
+
+#menu p {
+    display: block; /* Sørger for at hver tekst er på en ny linje */
+    margin-bottom: 10px; /* Litt avstand mellom linjene */
+}
+
+
+
+
+
+
+
+
+
+
+
 /* Responsiv design */
 @media (max-width: 600px) {
     .container {
