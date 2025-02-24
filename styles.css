@@ -221,23 +221,70 @@ body:has(.text-container) .text-container {
     color: #777; /* Lys grå farge for den mindre teksten */
 }
 
-/* Knapp under teksten */
+/* Knapp under teksten på KLP hjemside Get Started-knapp styling (større versjon) */
+ 
 .get-started-btn {
-    display: inline-block;
-    padding: 10px 20px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-block: 1rem; /* Økt padding for større knapp */
+    padding-inline: 2rem;
+    background-color: rgb(0 107 179); /* Blå farge */
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    gap: 12px;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    outline: none;
+    overflow: hidden;
+    font-size: 24px; /* Økt fontstørrelse */
+    text-decoration: none; /* Fjerner understrekning fra lenken */
+    width: fit-content;
     margin-top: 20px;
-    background-color: #28a745; /* Grønn bakgrunnsfarge */
-    color: white;
-    text-decoration: none;
-    font-size: 30px;
-    border-radius: 5px;
-    width: auto;
-    text-align: center;
 }
 
 .get-started-btn:hover {
-    background-color: #218838; /* Mørkere grønn ved hover */
+    transform: scale(1.1);
+    border-color: #fff9;
 }
+
+.get-started-btn::before {
+    content: "";
+    position: absolute;
+    width: 120px; /* Justert for større effekt */
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -120px;
+    opacity: 0.6;
+}
+
+.get-started-btn:hover::before {
+    animation: shine 1.5s ease-out infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -120px;
+    }
+    60% {
+        left: 100%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+
 
 /* Container for bilde og tekst */
 .content-container {
@@ -266,4 +313,244 @@ body:has(.text-container) .text-container {
     }
 }
 
+/* Generell styling */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #eef2f5; /* Lys bakgrunnsfarge for et rent utseende */
+    margin: 0;
+    padding: 0;
+}
 
+/* Navigasjonsbar */
+.navbar {
+    display: flex;
+    justify-content: center; /* Sørger for at resten er på midten */
+    background-color: #007BFF;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.navbar a:first-child {
+    margin-right: auto; /* Skyver "KLP" mer til venstre */
+    margin-left: 20px; /* Justerer hvor langt til venstre */
+}
+
+.navbar a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background-color: #0056b3; /* Mørkere blå ved hover */
+    border-radius: 5px;
+}
+
+/* Hovedcontainer */
+.container {
+    width: 90%;
+    max-width: 600px; /* Økt størrelse for bedre balanse */
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Input-felt og knapper */
+input {
+    padding: 12px;
+    margin: 12px 0;
+    width: 100%;
+    max-width: 500px; /* Begrens bredden for å unngå for bredt input-felt */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    padding: 14px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 500px; /* Begrens knappens bredde også */
+    background-color: #007BFF; /* Hold knappen blå */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #0056b3; /* Blå farge når du hoverer */
+}
+
+/*BUTTON STYLING PÅ DEPOSIT*/
+
+.deposit-btn {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-block: 0.8rem; /* Justert padding for å gjøre knappen mer kompakt */
+    padding-inline: 2rem;
+    background-color: rgb(0 107 179); /* Blå farge */
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    gap: 12px;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    outline: none;
+    overflow: hidden;
+    font-size: 20px; /* Litt mindre fontstørrelse */
+    text-decoration: none; /* Fjerner understrekning fra lenken */
+    width: 100%; /* Tilpasser bredden */
+    max-width: 500px; /* Samme bredde som input-feltet */
+    margin-left: auto;
+    margin-right: auto; /* Sentrum-align knapp */
+}
+
+.deposit-btn:hover {
+    transform: scale(1.1);
+    border-color: #fff9;
+}
+
+.deposit-btn::before {
+    content: "";
+    position: absolute;
+    width: 120px; /* Justert for større effekt */
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -120px;
+    opacity: 0.6;
+}
+
+.deposit-btn:hover::before {
+    animation: shine 1.5s ease-out infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -120px;
+    }
+    60% {
+        left: 100%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+/* Responsiv design */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+    .navbar a {
+        padding: 12px;
+        width: 100%;
+    }
+    .deposit-btn {
+        width: 95%;
+    }
+}
+
+/*BUTTON STYLING PÅ WITHDRAW*/
+
+/* Ny klasse for Ta ut-knappen */
+.withdraw-btn {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-block: 0.8rem; /* Justert padding for å gjøre knappen mer kompakt */
+    padding-inline: 2rem;
+    background-color: rgb(0 107 179); /* Blå farge */
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    gap: 12px;
+    font-weight: bold;
+    border: 3px solid #ffffff4d;
+    outline: none;
+    overflow: hidden;
+    font-size: 20px; /* Litt mindre fontstørrelse */
+    text-decoration: none; /* Fjerner understrekning fra lenken */
+    width: 100%; /* Tilpasser bredden */
+    max-width: 500px; /* Samme bredde som input-feltet */
+    margin-left: auto;
+    margin-right: auto; /* Sentrum-align knapp */
+}
+
+.withdraw-btn:hover {
+    transform: scale(1.1);
+    border-color: #fff9;
+}
+
+.withdraw-btn::before {
+    content: "";
+    position: absolute;
+    width: 120px; /* Justert for større effekt */
+    height: 100%;
+    background-image: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0) 70%
+    );
+    top: 0;
+    left: -120px;
+    opacity: 0.6;
+}
+
+.withdraw-btn:hover::before {
+    animation: shine 1.5s ease-out infinite;
+}
+
+@keyframes shine {
+    0% {
+        left: -120px;
+    }
+    60% {
+        left: 100%;
+    }
+    to {
+        left: 100%;
+    }
+}
+
+/* Responsiv design */
+@media (max-width: 600px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+    .navbar a {
+        padding: 12px;
+        width: 100%;
+    }
+    .withdraw-btn {
+        width: 95%;
+    }
+}
