@@ -136,18 +136,37 @@ body:has(.text-container) .text-container {
 
 /* Ny boks som omgir hovedtekstene */
 .info-box {
-    background: white; /* Hvit bakgrunn */
-    padding: 30px; /* Luft rundt teksten */
-    border-radius: 15px; /* Avrundede hjørner */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Myk skygge */
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 600px; /* Gjør boksen bredere for bedre tekstplassering */
+    background: rgba(217, 217, 217, 0.58); /* Halvtransparent grå */
+    border: 1px solid white;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.5s;
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    width: 100%; /* Full bredde inni text-container */
-    max-width: 600px; /* Begrenset bredde for penere layout */
-    margin: 20px auto; /* Sentrert på siden */
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+    padding: 30px; /* Gir plass til innholdet */
+    margin: 20px auto; /* Sentrerer boksen */
 }
+
+.info-box:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+}
+
+.info-box:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+}
+
 
 /* Sentrer text-container mer */
 .text-container {
