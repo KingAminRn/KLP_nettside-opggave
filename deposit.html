@@ -4,35 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sett inn penger</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Kobler til en ekstern CSS-fil for stil og utseende -->
 </head>
 <body>
-    <!-- Navigasjonsbar -->
+    <!-- Navigasjonsbar: Dette er en meny øverst på siden som lar brukeren navigere mellom forskjellige sider i nettbanken. -->
     <nav class="navbar">
-        <a href="KLP.html">KLP</a>
-        <a href="hjemside.html">Hjem</a>
-        <a href="deposit.html">Sett inn penger</a>
-        <a href="withdraw.html">Ta ut penger</a>
-        <a href="balance.html">Se saldo</a>
+        <a href="KLP.html">KLP</a> <!-- Lenke til hovedsiden til KLP -->
+        <a href="hjemside.html">Hjem</a> <!-- Lenke til hjemmesiden til banken -->
+        <a href="deposit.html">Sett inn penger</a> <!-- Lenke til siden for å sette inn penger -->
+        <a href="withdraw.html">Ta ut penger</a> <!-- Lenke til siden for å ta ut penger -->
+        <a href="balance.html">Se saldo</a> <!-- Lenke til siden for å sjekke saldoen -->
+        <a href="saldograf.html">Saldo graf</a>
     </nav>
 
-    <!-- Innhold -->
+    <!-- Hovedinnholdet på siden -->
     <div class="container">
-        <h1>Sett inn penger</h1>
+        <h1>Sett inn penger</h1> <!-- Overskrift som viser siden sin funksjon -->
+
+        <!-- Et input-felt hvor brukeren kan skrive inn beløpet de vil sette inn -->
         <input type="number" id="depositAmount" placeholder="Beløp" min="1">
-        <!-- Endret knappen til å ha klasse deposit-btn for samme stil som Get Started -->
+        
+        <!-- Knapp som brukeren trykker på for å sette inn penger. Når den trykkes, aktiveres funksjonen depositMoney(). -->
         <button class="deposit-btn" onclick="depositMoney()">Sett inn</button>
     </div>
 
     <script>
+        // Funksjon for å sette inn penger på brukerkontoen
         function depositMoney() {
+            // Henter verdien fra input-feltet og konverterer den til et desimaltall (float)
             let amount = parseFloat(document.getElementById("depositAmount").value);
+
+            // Sjekker om beløpet er et gyldig tall og større enn 0
             if (amount > 0) {
+                // Henter brukerdata fra nettleserens lagring (localStorage) og konverterer det tilbake til et objekt
                 let user = JSON.parse(localStorage.getItem("user"));
+
+                // Legger til det innskutte beløpet på brukerens saldo
                 user.balance += amount;
+
+                // Lagrer den oppdaterte brukerbalansen tilbake i nettleserens lagring
                 localStorage.setItem("user", JSON.stringify(user));
+
+                // Viser en melding som bekrefter at innskuddet var vellykket
                 alert("Penger satt inn!");
             } else {
+                // Viser en feilmelding hvis brukeren prøver å sette inn et ugyldig beløp (f.eks. 0 eller negativt beløp)
                 alert("Skriv inn et gyldig beløp.");
             }
         }

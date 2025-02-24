@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saldo Graf</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigasjonsmeny for enkel navigering mellom sidene -->
+    <nav class="navbar">
+        <a href="hjemside.html">Hjem</a>
+        <a href="deposit.html">Sett inn penger</a>
+        <a href="withdraw.html">Ta ut penger</a>
+        <a href="balance.html">Se saldo</a>
+        <a href="saldograf.html">Saldo graf</a>
+    </nav>
+
+    <!-- Container som holder på innholdet på siden -->
+    <div class="container">
+        <h1>Saldo graf</h1>
+        <!-- Canvas-elementet brukes til å vise saldo-grafen ved hjelp av Chart.js -->
+        <canvas id="balanceChart"></canvas>
+    </div>
+
+    <!-- Importerer Chart.js fra et CDN for å lage grafer -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Henter tidligere saldoendringer fra localStorage, eller starter med en tom liste hvis det ikke finnes noen data
+        let history = JSON.parse(localStorage.getItem("balanceHistory")) || [];
+
+        // Henter brukerens saldo fra localStorage, eller setter den til 0 hvis det ikke finnes noen lagrede data
+        let user = JSON.parse(localStorage.getItem("user")) || { balance: 0 };
+
+        // Oppretter et tidsstempel for å vise når saldoen ble registrert
+        let now = new Date(); // Henter nåværende tid og dato
+        let timeLabel = now.getHours() + ":" + now.getMinutes(); // Formaterer tidspunktet som "timer:minutter"
+
+        // Legger til en ny oppføring i historikken med nåværende saldo og tidspunkt
+        history.push({ time: timeLabel, balance: user.balance });
+
+        // Begrenser historikken til maks 10 oppføringer, slik at grafen ikke blir for lang
+        if (history.length > 10) history.shift();
+
+        // Lagrer den oppdaterte historikken tilbake i localStorage
+        localStorage.setItem("balanceHistory", JSON.stringify(history));
+
+        // Oppretter en liste med tidspunkt (x-akse) for grafen
+        let labels = history.map(entry => entry.time);
+
+        // Oppretter en liste med saldoverdier (y-akse) for grafen
+        let data = history.map(entry => entry.balance);
+
+        // Oppretter en ny linjegraf ved hjelp av Chart.js
+        new Chart(document.getElementById("balanceChart"), {
+            type: "line", // Setter graf-typen til "linje" (line)
+            data: {
+                labels: labels, // Bruker de lagrede tidspunktene som x-akse
+                datasets: [{
+                    label: "Saldo over tid", // Navn på datasettet som vises i grafen
+                    data: data, // Bruker saldoverdiene som y-akse
+                    borderColor: "blue", // Setter linjefargen til blå
+                    backgroundColor: "rgba(0, 0, 255, 0.1)", // Setter en gjennomsiktig blå bakgrunnsfarge
+                    borderWidth: 2 // Gjør linjen litt tykkere for bedre synlighet
+                }]
+            },
+            options: {
+                responsive: true, // Gjør at grafen automatisk tilpasser seg skjermstørrelsen
+                scales: {
+                    y: {
+                        beginAtZero: true // Sikrer at grafen starter fra 0 for bedre oversikt
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

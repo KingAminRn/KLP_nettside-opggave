@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Se saldo</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Kobler til en ekstern CSS-fil for å style siden -->
 </head>
 <body>
-    <!-- Navigasjonsbar -->
+    <!-- Navigasjonsbar: Dette er menyen som lar brukeren navigere til de forskjellige sidene -->
     <nav class="navbar">
-        <a href="KLP.html">KLP</a>
-        <a href="hjemside.html">Hjem</a>
-        <a href="deposit.html">Sett inn penger</a>
-        <a href="withdraw.html">Ta ut penger</a>
-        <a href="balance.html">Se saldo</a>
+        <a href="KLP.html">KLP</a> <!-- Lenke til KLP-hovedsiden -->
+        <a href="hjemside.html">Hjem</a> <!-- Lenke til hjemmesiden til banken -->
+        <a href="deposit.html">Sett inn penger</a> <!-- Lenke til siden for å sette inn penger -->
+        <a href="withdraw.html">Ta ut penger</a> <!-- Lenke til siden for å ta ut penger -->
+        <a href="balance.html">Se saldo</a> <!-- Lenke til saldo-siden som viser hvor mye penger brukeren har -->
+        <a href="saldograf.html">Saldo graf</a>
     </nav>
 
-    <!-- Innhold -->
+    <!-- Hovedinnholdet på siden -->
     <div class="container">
-        <h1>Din saldo</h1>
+        <h1>Din saldo</h1> <!-- Overskrift som viser brukeren at dette er saldo-siden -->
+
+        <!-- Viser saldoen til brukeren ved å hente verdien fra localStorage -->
         <p>Saldo: <span id="balanceAmount"></span> NOK</p>
     </div>
 
     <script>
+        // Når nettsiden er lastet inn, skal saldoen vises automatisk
         document.addEventListener("DOMContentLoaded", function () {
+            // Henter brukerens lagrede data fra nettleserens localStorage og konverterer det tilbake til et objekt
             let user = JSON.parse(localStorage.getItem("user"));
+
+            // Viser brukerens saldo ved å oppdatere innholdet i <span>-elementet med id "balanceAmount"
             document.getElementById("balanceAmount").textContent = user.balance;
         });
     </script>

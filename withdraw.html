@@ -4,34 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ta ut penger</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Kobler til en ekstern CSS-fil som definerer sidens stil og utseende -->
 </head>
 <body>
-    <!-- Navigasjonsbar -->
+    <!-- Navigasjonsbar: Dette er menyen som lar brukeren navigere mellom de ulike sidene i nettbanken -->
     <nav class="navbar">
-        <a href="KLP.html">KLP</a>
-        <a href="hjemside.html">Hjem</a>
-        <a href="deposit.html">Sett inn penger</a>
-        <a href="withdraw.html">Ta ut penger</a>
-        <a href="balance.html">Se saldo</a>
+        <a href="KLP.html">KLP</a> <!-- Lenke til hovedsiden til KLP -->
+        <a href="hjemside.html">Hjem</a> <!-- Lenke til hjemmesiden til banken -->
+        <a href="deposit.html">Sett inn penger</a> <!-- Lenke til siden hvor brukeren kan sette inn penger -->
+        <a href="withdraw.html">Ta ut penger</a> <!-- Lenke til denne siden, hvor brukeren kan ta ut penger -->
+        <a href="balance.html">Se saldo</a> <!-- Lenke til saldo-siden for å sjekke hvor mye penger brukeren har -->
+        <a href="saldograf.html">Saldo graf</a>
     </nav>
 
-    <!-- Innhold -->
+    <!-- Hovedinnholdet på siden -->
     <div class="container">
-        <h1>Ta ut penger</h1>
+        <h1>Ta ut penger</h1> <!-- Overskrift som forteller brukeren hvilken funksjon denne siden har -->
+
+        <!-- Input-felt hvor brukeren skriver inn hvor mye penger de ønsker å ta ut -->
         <input type="number" id="withdrawAmount" placeholder="Beløp" min="1">
+
+        <!-- Knapp for å bekrefte uttaket. Når brukeren trykker på den, aktiveres funksjonen withdrawMoney(). -->
         <button class="withdraw-btn" onclick="withdrawMoney()">Ta ut</button>
     </div>
 
     <script>
+        // Funksjon som håndterer uttak av penger fra brukerens konto
         function withdrawMoney() {
+            // Henter beløpet fra input-feltet og konverterer det til et desimaltall (float)
             let amount = parseFloat(document.getElementById("withdrawAmount").value);
+
+            // Henter brukerdata fra nettleserens lagring (localStorage) og konverterer det tilbake til et objekt
             let user = JSON.parse(localStorage.getItem("user"));
+
+            // Sjekker at beløpet er større enn 0 og at brukeren har nok penger på saldoen
             if (amount > 0 && amount <= user.balance) {
+                // Trekker beløpet fra brukerens saldo
                 user.balance -= amount;
+
+                // Lagrer den oppdaterte saldoen tilbake i nettleserens lagring
                 localStorage.setItem("user", JSON.stringify(user));
+
+                // Viser en melding som bekrefter at uttaket var vellykket
                 alert("Penger tatt ut!");
             } else {
+                // Viser en feilmelding hvis beløpet er ugyldig eller brukeren ikke har nok penger på kontoen
                 alert("Ugyldig beløp eller ikke nok penger på konto.");
             }
         }

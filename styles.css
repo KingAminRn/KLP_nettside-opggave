@@ -554,3 +554,13 @@ button:hover {
         width: 95%;
     }
 }
+
+/* SALDO GRAF!*/
+
+/* Stil for grafen (canvas) */
+#balanceChart {
+    margin-top: 20px;
+    max-width: 600px; /* Maks bredde på grafen */
+    margin-left: auto; /* Sentrer grafen horisontalt */
+    margin-right: auto;
+}

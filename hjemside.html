@@ -7,64 +7,79 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigasjonsbar -->
+    <!-- Navigasjonsbar: Dette er en meny øverst på siden som lar brukeren navigere mellom forskjellige sider i nettbanken. -->
     <nav class="navbar">
-        <a href="KLP.html">KLP</a>
-        <a href="hjemside.html">Hjem</a>
-        <a href="deposit.html">Sett inn penger</a>
-        <a href="withdraw.html">Ta ut penger</a>
-        <a href="balance.html">Se saldo</a>
+        <a href="KLP.html">KLP</a> <!-- Lenke til hovedsiden til KLP -->
+        <a href="hjemside.html">Hjem</a> <!-- Lenke til hjemmesiden til banken -->
+        <a href="deposit.html">Sett inn penger</a> <!-- Lenke til siden for å sette inn penger på saldoen -->
+        <a href="withdraw.html">Ta ut penger</a> <!-- Lenke til siden for å ta ut penger fra saldoen -->
+        <a href="balance.html">Se saldo</a> <!-- Lenke til siden for å sjekke saldoen på kontoen -->
+        <a href="saldograf.html">Saldo graf</a>
     </nav>
 
-    <!-- Innhold -->
+    <!-- Hovedinnholdet på siden -->
     <div class="content-container">
+        <!-- Et bilde som plasseres på venstre side av skjermen -->
         <img src="bilder/phoneman.jpg" alt="Phone Man" class="left-image">
         
         <div class="text-container">
-            <!-- Hvit boks for hovedtekstene -->
+            <!-- En hvit boks som inneholder velkomstmelding og brukerinformasjon -->
             <div class="info-box">
-                <h1>Velkommen til KLP Bank!</h1>
+                <h1>Velkommen til KLP Bank!</h1> <!-- Overskrift som ønsker brukeren velkommen -->
+                
+                <!-- Dette er et skjult menyområde som bare vises hvis brukeren har en konto -->
                 <div id="menu" style="display:none;">
-                    <p>Velkommen, <span id="displayName"></span>!</p>
-                    <p>Bankkonto: <span id="accountNumber"></span></p>
-                    <p>Saldo: <span id="balance"></span> NOK</p>
+                    <p>Velkommen, <span id="displayName"></span>!</p> <!-- Viser brukerens navn etter registrering -->
+                    <p>Bankkonto: <span id="accountNumber"></span></p> <!-- Viser bankkonto-nummeret til brukeren -->
+                    <p>Saldo: <span id="balance"></span> NOK</p> <!-- Viser saldoen til brukeren -->
                 </div>
             </div>
 
-            <!-- Brukerskjema -->
+            <!-- Skjema for å opprette en ny bruker -->
             <div id="userForm">
-                <input type="text" id="username" placeholder="Skriv inn navn" required>
-                <button onclick="createUser()">Opprett bruker</button>
+                <input type="text" id="username" placeholder="Skriv inn navn" required> <!-- Brukeren skriver inn sitt navn her -->
+                <button onclick="createUser()">Opprett bruker</button> <!-- Knapp for å opprette en ny bruker -->
             </div>
         </div>
     </div>
 
     <script>
+        // Når nettsiden er ferdig lastet inn, sjekker denne koden om en bruker allerede er lagret i nettleserens minne (localStorage).
+        // Hvis det finnes en lagret bruker, vises menyen med brukerinformasjon automatisk.
         document.addEventListener("DOMContentLoaded", function () {
-            const user = JSON.parse(localStorage.getItem("user"));
-            if (user) {
-                showMenu(user);
+            const user = JSON.parse(localStorage.getItem("user")); // Henter brukerdata fra localStorage og konverterer det til et objekt
+            if (user) { // Hvis det finnes en lagret bruker
+                showMenu(user); // Kaller funksjonen som viser brukerinformasjonen
             }
         });
 
+        // Funksjon for å opprette en ny bruker basert på navnet brukeren skriver inn
         function createUser() {
-            const username = document.getElementById("username").value;
-            if (!username) {
-                alert("Vennligst skriv inn et navn.");
-                return;
+            const username = document.getElementById("username").value; // Henter navnet som brukeren har skrevet inn i input-feltet
+            if (!username) { // Sjekker om feltet er tomt
+                alert("Vennligst skriv inn et navn."); // Viser en feilmelding hvis brukeren ikke har skrevet inn noe
+                return; // Stopper funksjonen fra å fortsette hvis navnet mangler
             }
+            // Genererer et tilfeldig 9-sifret kontonummer ved hjelp av matematisk formel
             const accountNumber = Math.floor(100000000 + Math.random() * 900000000);
+            
+            // Oppretter et brukerobjekt med navn, kontonummer og startbalanse på 0
             const user = { name: username, accountNumber: accountNumber, balance: 0 };
+
+            // Lagrer brukerdata i localStorage slik at det forblir lagret selv om siden lukkes
             localStorage.setItem("user", JSON.stringify(user));
+
+            // Viser brukerinformasjonen på skjermen
             showMenu(user);
         }
 
+        // Funksjon for å vise brukermenyen med informasjon om den registrerte brukeren
         function showMenu(user) {
-            document.getElementById("userForm").style.display = "none";
-            document.getElementById("menu").style.display = "block";
-            document.getElementById("displayName").textContent = user.name;
-            document.getElementById("accountNumber").textContent = user.accountNumber;
-            document.getElementById("balance").textContent = user.balance;
+            document.getElementById("userForm").style.display = "none"; // Skjuler skjemaet for å registrere en bruker
+            document.getElementById("menu").style.display = "block"; // Viser menyen med brukerinformasjon
+            document.getElementById("displayName").textContent = user.name; // Oppdaterer skjermen med brukerens navn
+            document.getElementById("accountNumber").textContent = user.accountNumber; // Viser bankkontonummeret til brukeren
+            document.getElementById("balance").textContent = user.balance; // Viser saldoen til brukeren
         }
     </script>
 </body>
