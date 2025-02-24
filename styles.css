@@ -9,14 +9,21 @@ body {
 
 /* Navigasjonsbar */
 .navbar {
-    background-color: #007BFF; /* Blå bakgrunnsfarge */
+    display: flex;
+    justify-content: center; /* Sørger for at resten er på midten */
+    background-color: #007BFF;
     padding: 10px 0;
-    text-align: center;
     position: sticky;
     top: 0;
     width: 100%;
     z-index: 100;
 }
+
+.navbar a:first-child {
+    margin-right: auto; /* Skyver "KLP" mer til venstre */
+    margin-left: 20px; /* Justerer hvor langt til venstre */
+}
+
 
 .navbar a {
     color: white;
